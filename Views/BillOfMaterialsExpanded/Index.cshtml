@@ -18,7 +18,7 @@
     )
     .RootValue("HasChild")
     .ParentIdExpr("ParentId")
-    .KeyExpr("FullSequence")
+    .KeyExpr("BillOfMaterialsExpandedId")
     .RemoteOperations(o => o.Filtering(true).Grouping(true).Sorting(true))
     .Selection(s => s
             .Mode(SelectionMode.Multiple)

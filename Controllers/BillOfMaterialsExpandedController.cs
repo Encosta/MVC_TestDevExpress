@@ -13,8 +13,6 @@ using Newtonsoft.Json;
 
 namespace MVC_Test.Controllers
 {
-    [Route("api/[controller]/[action]")]
-    [ApiController]
     public class BillOfMaterialsExpandedController : Controller
     {
         private EncostaContext _context;
@@ -27,13 +25,13 @@ namespace MVC_Test.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View("~/Views/BillOfMaterialsExpanded");
+            return View();
         }
 
         [HttpGet]
         public object Get(DataSourceLoadOptions loadOptions)
         {
-            return DataSourceLoader.Load(_context.BillOfMaterialsExpanded, loadOptions);
+            return DataSourceLoader.Load(_context.BillOfMaterialsExpanded.AsQueryable(), loadOptions);
         }
 
 
