@@ -39,7 +39,7 @@ namespace MVC_Test.Controllers
                        {
                            BillOfMaterialsExpandedId = b.BillOfMaterialsExpandedId,
                            BomLevel = b.BomLevel,
-                           TopLevelItem = b.TopLevelItem, //.Contains("001SP010030.00A").ToString(),
+                           TopLevelItem = b.TopLevelItem,
                            TopLevelDescription = b.TopLevelDescription,
                            ParentItem = b.ParentItem,
                            ParentDescription = b.ParentDescription,
@@ -47,9 +47,10 @@ namespace MVC_Test.Controllers
                            ComponentDescription = b.ComponentDescription,
                            FullSequence = b.FullSequence,
                            ParentId = b.ParentId,
-                           HasChild = b.HasChild
+                           HasChild = b.HasChild,
+
                        };
-            return DataSourceLoader.Load(_context.BillOfMaterialsExpanded.Take(10000), loadOptions);
+            return DataSourceLoader.Load(_context.BillOfMaterialsExpanded, loadOptions);
         }
 
 
