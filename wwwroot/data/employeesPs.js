@@ -37,7 +37,21 @@
     "Mobile_Phone": "(310) 555-8583",
     "Birth_Date": "1972-07-11",
     "Hire_Date": "2007-12-18"
-}, {
+    },
+    {
+        "ID": 3,
+        "Head_ID": 5,
+        "Full_Name": "Arthur Miller",
+        "Prefix": "Mr.",
+        "Title": "CTO",
+        "City": "Denver",
+        "State": "Colorado",
+        "Email": "arthurm@dx-email.com",
+        "Skype": "arthurm_DX_skype",
+        "Mobile_Phone": "(310) 555-8583",
+        "Birth_Date": "1972-07-11",
+        "Hire_Date": "2007-12-18"
+    },{
     "ID": 4,
     "Head_ID": 1,
     "Full_Name": "Robert Reagan",
@@ -388,4 +402,18 @@
     "Mobile_Phone": "(562) 555-9282",
     "Birth_Date": "1972-09-11",
     "Hire_Date": "2009-04-22"
+    },
+{
+    "ID": 31,
+        "Head_ID": 8,
+        "Full_Name": "Ken Samuelson",
+        "Prefix": "Dr.",
+        "Title": "Ombudsman",
+        "City": "St. Louis",
+        "State": "Missouri",
+        "Email": "kents@dx-email.com",
+        "Skype": "kents_DX_skype",
+        "Mobile_Phone": "(562) 555-9282",
+        "Birth_Date": "1972-09-11",
+        "Hire_Date": "2009-04-22"
 }];

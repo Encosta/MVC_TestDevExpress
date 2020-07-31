@@ -16,47 +16,34 @@ namespace MVC_Test.Data
         {
         }
 
-        public virtual DbSet<BillOfMaterialsExpanded> BillOfMaterialsExpanded { get; set; }
+        public virtual DbSet<BillOfMaterialsTest> BillOfMaterialsTest { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=server3;Database=Encosta;Trusted_Connection=True;");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BillOfMaterialsExpanded>(entity =>
+            modelBuilder.Entity<BillOfMaterialsTest>(entity =>
             {
-                entity.HasIndex(e => e.BomLevel)
-                    .HasName("BOMLevel");
+                entity.HasNoKey();
 
-                entity.HasIndex(e => e.ComponentItem)
-                    .HasName("ComponentItem");
-
-                entity.HasIndex(e => e.FullSequence)
-                    .HasName("FullSequence");
-
-                entity.HasIndex(e => e.ParentId)
-                    .HasName("ParentID");
-
-                entity.HasIndex(e => e.ParentItem)
-                    .HasName("ParentItem");
-
-                entity.HasIndex(e => e.TopLevelItem)
-                    .HasName("TopLevelItem");
-
-                entity.Property(e => e.BillOfMaterialsExpandedId)
-                    .HasColumnName("BillOfMaterialsExpandedID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.BillOfMaterialsExpandedId).HasColumnName("BillOfMaterialsExpandedID");
 
                 entity.Property(e => e.BomDate).HasColumnType("date");
 
-                entity.Property(e => e.BomLevel).HasColumnName("BOMLevel");
+                entity.Property(e => e.Bomlevel).HasColumnName("BOMLevel");
 
-                entity.Property(e => e.BomReference)
+                entity.Property(e => e.Bomreference)
                     .HasColumnName("BOMReference")
                     .HasMaxLength(100);
 
-                entity.Property(e => e.BomRelease)
+                entity.Property(e => e.Bomrelease)
                     .HasColumnName("BOMRelease")
                     .HasMaxLength(100);
 
@@ -66,9 +53,11 @@ namespace MVC_Test.Data
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.FullSequence).HasMaxLength(100);
-
                 entity.Property(e => e.HasChild).HasMaxLength(1);
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.LineCost).HasColumnType("numeric(16, 6)");
 
