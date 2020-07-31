@@ -37,6 +37,7 @@ namespace MVC_Test.Controllers
             var boms = from b in _context.TreeList
                        select new TreeList
                        {
+                           TreeListId = b.TreeListId,
                            Id= b.Id,
                            Items = b.Items,
                            ParentId = b.ParentId,
@@ -63,9 +64,9 @@ namespace MVC_Test.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put(string key, string values)
+        public IActionResult Put(Guid key, string values)
         {
-            var treeList = _context.TreeList.First(e => e.Id == key);
+            var treeList = _context.TreeList.First(e => e.TreeListId == key);
 
             JsonConvert.PopulateObject(values, treeList);
 
@@ -78,9 +79,9 @@ namespace MVC_Test.Controllers
         }
 
         [HttpDelete]
-        public void Delete(string key)
+        public void Delete(Guid key)
         {
-            var treeList = _context.TreeList.First(e => e.Id == key);
+            var treeList = _context.TreeList.First(e => e.TreeListId == key);
             _context.TreeList.Remove(treeList);
             _context.SaveChanges();
         }

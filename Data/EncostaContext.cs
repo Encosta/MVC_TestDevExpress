@@ -33,13 +33,15 @@ namespace MVC_Test.Data
             {
                 entity.HasNoKey();
 
-                entity.Property(e => e.Id)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Id).HasMaxLength(50);
 
                 entity.Property(e => e.Items).HasMaxLength(50);
 
                 entity.Property(e => e.ParentId).HasMaxLength(50);
+
+                entity.Property(e => e.TreeListId)
+                    .HasColumnName("TreeListID")
+                    .HasDefaultValueSql("(newid())");
             });
 
             OnModelCreatingPartial(modelBuilder);

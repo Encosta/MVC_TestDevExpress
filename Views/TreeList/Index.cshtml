@@ -19,11 +19,11 @@
             .Key("Id")
         )
         .DataStructure(TreeListDataStructure.Plain)
-        .RootValue("-1")
+        .RootValue(-1)
         .ParentIdExpr("ParentId")
         .KeyExpr("Id")
         //.HasItemsExpr("HasChild")
-        .RemoteOperations(o => o.Filtering(true).Grouping(true).Sorting(true))
+        //.RemoteOperations(o => o.Filtering(true).Grouping(true).Sorting(true))
         .Selection(s => s
             .Mode(SelectionMode.Multiple)
             .Recursive(true)
