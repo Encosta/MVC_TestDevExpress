@@ -16,7 +16,7 @@ namespace MVC_Test.Data
         {
         }
 
-        public virtual DbSet<BillOfMaterialsTest> BillOfMaterialsTest { get; set; }
+        public virtual DbSet<BillOfMaterialsExpanded> BillOfMaterialsExpanded { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,11 +29,11 @@ namespace MVC_Test.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BillOfMaterialsTest>(entity =>
+            modelBuilder.Entity<BillOfMaterialsExpanded>(entity =>
             {
-                entity.HasNoKey();
-
-                entity.Property(e => e.BillOfMaterialsExpandedId).HasColumnName("BillOfMaterialsExpandedID");
+                entity.Property(e => e.BillOfMaterialsExpandedId)
+                    .HasColumnName("BillOfMaterialsExpandedID")
+                    .HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.BomDate).HasColumnType("date");
 
@@ -53,11 +53,9 @@ namespace MVC_Test.Data
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.HasChild).HasMaxLength(1);
+                entity.Property(e => e.FullSequence).HasMaxLength(100);
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .HasMaxLength(100);
+                entity.Property(e => e.HasChild).HasMaxLength(1);
 
                 entity.Property(e => e.LineCost).HasColumnType("numeric(16, 6)");
 

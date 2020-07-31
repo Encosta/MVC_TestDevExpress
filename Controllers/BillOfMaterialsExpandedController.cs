@@ -16,19 +16,13 @@ using MVC_Test.Models;
 
 namespace MVC_Test.Controllers
 {
-    public class BillOfMaterialsTestController : Controller
+    public class BillOfMaterialsExpandedController : Controller
     {
         private EncostaContext _context;
 
-        public BillOfMaterialsTestController(EncostaContext context)
+        public BillOfMaterialsExpandedController(EncostaContext context)
         {
             _context = context;
-        }
-
-        [HttpGet]
-        public IActionResult DataGrid()
-        {
-            return View();
         }
 
         [HttpGet]
@@ -40,22 +34,22 @@ namespace MVC_Test.Controllers
         [HttpGet]
         public object Get(DataSourceLoadOptions loadOptions)
         {
-            var boms = from b in _context.BillOfMaterialsTest
-                       select new BillOfMaterialsTest
+            var boms = from b in _context.BillOfMaterialsExpanded
+                       select new BillOfMaterialsExpanded
                        {
                            BillOfMaterialsExpandedId = b.BillOfMaterialsExpandedId,
                            Bomlevel = b.Bomlevel,
-                           TopLevelItem = b.TopLevelItem,
+                           TopLevelItem = b.TopLevelItem.Contains("001SP010030.00A").ToString(),
                            TopLevelDescription = b.TopLevelDescription,
                            ParentItem = b.ParentItem,
                            ParentDescription = b.ParentDescription,
                            ComponentItem = b.ComponentItem,
                            ComponentDescription = b.ComponentDescription,
-                           Id= b.Id,
+                           FullSequence = b.FullSequence,
                            ParentId = b.ParentId,
                            HasChild = b.HasChild
                        };
-            return DataSourceLoader.Load(_context.BillOfMaterialsTest.Take(1000), loadOptions);
+            return DataSourceLoader.Load(_context.BillOfMaterialsExpanded.Take(10000), loadOptions);
         }
 
 
@@ -63,13 +57,13 @@ namespace MVC_Test.Controllers
         [HttpPost]
         public IActionResult Post(string values)
         {
-            var newBomExpanded = new BillOfMaterialsTest();
+            var newBomExpanded = new BillOfMaterialsExpanded();
             JsonConvert.PopulateObject(values, newBomExpanded);
 
             if (!TryValidateModel(newBomExpanded))
                 return BadRequest(); //(ModelState.GetFullErrorMessage());
 
-            _context.BillOfMaterialsTest.Add(newBomExpanded);
+            _context.BillOfMaterialsExpanded.Add(newBomExpanded);
             _context.SaveChanges();
 
             return Ok();
@@ -78,11 +72,11 @@ namespace MVC_Test.Controllers
         [HttpPut]
         public IActionResult Put(Guid key, string values)
         {
-            var billOfMaterialsTest = _context.BillOfMaterialsTest.First(e => e.BillOfMaterialsExpandedId == key);
+            var billOfMaterialsExpanded = _context.BillOfMaterialsExpanded.First(e => e.BillOfMaterialsExpandedId == key);
 
-            JsonConvert.PopulateObject(values, billOfMaterialsTest);
+            JsonConvert.PopulateObject(values, billOfMaterialsExpanded);
 
-            if (!TryValidateModel(billOfMaterialsTest))
+            if (!TryValidateModel(billOfMaterialsExpanded))
                 return BadRequest(); //(ModelState.GetFullErrorMessage());
 
             _context.SaveChanges();
@@ -93,8 +87,8 @@ namespace MVC_Test.Controllers
         [HttpDelete]
         public void Delete(Guid key)
         {
-            var billOfMaterialsTest = _context.BillOfMaterialsTest.First(e => e.BillOfMaterialsExpandedId == key);
-            _context.BillOfMaterialsTest.Remove(billOfMaterialsTest);
+            var billOfMaterialsExpanded = _context.BillOfMaterialsExpanded.First(e => e.BillOfMaterialsExpandedId == key);
+            _context.BillOfMaterialsExpanded.Remove(billOfMaterialsExpanded);
             _context.SaveChanges();
         }
     }
