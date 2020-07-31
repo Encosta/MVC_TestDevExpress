@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MVC_Test.Models.TreeList>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_DevExtremeLayout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <h2>Tree List</h2>
+
+    @(Html.DevExtreme().TreeList<MVC_Test.Models.TreeList>()
+        .DataSource(ds => ds.Mvc()
+            .Controller("TreeList")
+            .LoadAction("Get")
+            .InsertAction("Post")
+            .UpdateAction("Put")
+            .DeleteAction("Delete")
+            .Key("Id")
+        )
+        .DataStructure(TreeListDataStructure.Plain)
+        .RootValue("-1")
+        .ParentIdExpr("ParentId")
+        .KeyExpr("Id")
+        //.HasItemsExpr("HasChild")
+        .RemoteOperations(o => o.Filtering(true).Grouping(true).Sorting(true))
+        .Selection(s => s
+            .Mode(SelectionMode.Multiple)
+            .Recursive(true)
+        )
+        .Columns(columns =>
+        {
+            columns.AddFor(c => c.Id);
+            columns.AddFor(c => c.Items);
+            columns.AddFor(c => c.ParentId);
+            columns.AddFor(c => c.HasChild);
+
+        })
+        .AutoExpandAll(true)
+        .ColumnAutoWidth(true)
+        .ShowBorders(true)
+        .Scrolling(scrolling => scrolling.Mode(TreeListScrollingMode.Standard))
+        .Paging(paging =>
+        {
+            paging.Enabled(true);
+            paging.PageSize(10);
+        })
+        .Pager(pager =>
+        {
+            pager.ShowPageSizeSelector(true);
+            pager.AllowedPageSizes(new[] {5, 10, 30});
+            pager.ShowInfo(true);
+        })
+        .Editing(e => e
+            .AllowAdding(true)
+            .AllowUpdating(true)
+            .AllowDeleting(true)))
+
+</div>

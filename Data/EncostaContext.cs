@@ -16,7 +16,7 @@ namespace MVC_Test.Data
         {
         }
 
-        public virtual DbSet<BillOfMaterialsTest> BillOfMaterialsTest { get; set; }
+        public virtual DbSet<TreeList> TreeList { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,63 +29,17 @@ namespace MVC_Test.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BillOfMaterialsTest>(entity =>
+            modelBuilder.Entity<TreeList>(entity =>
             {
                 entity.HasNoKey();
 
-                entity.Property(e => e.BillOfMaterialsExpandedId).HasColumnName("BillOfMaterialsExpandedID");
-
-                entity.Property(e => e.BomDate).HasColumnType("date");
-
-                entity.Property(e => e.Bomlevel).HasColumnName("BOMLevel");
-
-                entity.Property(e => e.Bomreference)
-                    .HasColumnName("BOMReference")
-                    .HasMaxLength(100);
-
-                entity.Property(e => e.Bomrelease)
-                    .HasColumnName("BOMRelease")
-                    .HasMaxLength(100);
-
-                entity.Property(e => e.ComponentDescription).IsRequired();
-
-                entity.Property(e => e.ComponentItem)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.HasChild).HasMaxLength(1);
-
                 entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .HasMaxLength(100);
-
-                entity.Property(e => e.LineCost).HasColumnType("numeric(16, 6)");
-
-                entity.Property(e => e.ParentDescription).IsRequired();
-
-                entity.Property(e => e.ParentId)
-                    .HasColumnName("ParentID")
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.ParentItem)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.PurchasedOrManufactured).HasMaxLength(1);
+                entity.Property(e => e.Items).HasMaxLength(50);
 
-                entity.Property(e => e.QuantityPerParent).HasColumnType("numeric(16, 6)");
-
-                entity.Property(e => e.QuantityPerTop).HasColumnType("numeric(16, 6)");
-
-                entity.Property(e => e.ScrapPercentage).HasColumnType("numeric(5, 2)");
-
-                entity.Property(e => e.StandardCost).HasColumnType("numeric(16, 6)");
-
-                entity.Property(e => e.TopLevelDescription).IsRequired();
-
-                entity.Property(e => e.TopLevelItem)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.ParentId).HasMaxLength(50);
             });
 
             OnModelCreatingPartial(modelBuilder);
