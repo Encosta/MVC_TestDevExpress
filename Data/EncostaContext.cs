@@ -37,13 +37,13 @@ namespace MVC_Test.Data
 
                 entity.Property(e => e.BomDate).HasColumnType("date");
 
-                entity.Property(e => e.Bomlevel).HasColumnName("BOMLevel");
+                entity.Property(e => e.BomLevel).HasColumnName("BOMLevel");
 
-                entity.Property(e => e.Bomreference)
+                entity.Property(e => e.BomReference)
                     .HasColumnName("BOMReference")
                     .HasMaxLength(100);
 
-                entity.Property(e => e.Bomrelease)
+                entity.Property(e => e.BomRelease)
                     .HasColumnName("BOMRelease")
                     .HasMaxLength(100);
 

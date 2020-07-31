@@ -38,8 +38,8 @@ namespace MVC_Test.Controllers
                        select new BillOfMaterialsExpanded
                        {
                            BillOfMaterialsExpandedId = b.BillOfMaterialsExpandedId,
-                           Bomlevel = b.Bomlevel,
-                           TopLevelItem = b.TopLevelItem.Contains("001SP010030.00A").ToString(),
+                           BomLevel = b.BomLevel,
+                           TopLevelItem = b.TopLevelItem, //.Contains("001SP010030.00A").ToString(),
                            TopLevelDescription = b.TopLevelDescription,
                            ParentItem = b.ParentItem,
                            ParentDescription = b.ParentDescription,
