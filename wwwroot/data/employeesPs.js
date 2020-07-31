@@ -13,7 +13,7 @@
     "Hire_Date": "1995-01-15"
 }, {
     "ID": 2,
-    "Head_ID": 1,
+    "Head_ID": -1,
     "Full_Name": "Samantha Bright",
     "Prefix": "Dr.",
     "Title": "COO",
