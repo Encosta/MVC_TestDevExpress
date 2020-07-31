@@ -6,7 +6,7 @@ namespace MVC_Test.Models
     public partial class BillOfMaterialsExpanded
     {
         public Guid BillOfMaterialsExpandedId { get; set; }
-        public int? BomLevel { get; set; }
+        public int? Bomlevel { get; set; }
         public string TopLevelItem { get; set; }
         public string TopLevelDescription { get; set; }
         public string ParentItem { get; set; }
@@ -25,7 +25,7 @@ namespace MVC_Test.Models
         public decimal? LineCost { get; set; }
         public string ManufacturerCodes { get; set; }
         public DateTime? BomDate { get; set; }
-        public string BomReference { get; set; }
-        public string BomRelease { get; set; }
+        public string Bomreference { get; set; }
+        public string Bomrelease { get; set; }
     }
 }

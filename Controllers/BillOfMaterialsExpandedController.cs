@@ -38,7 +38,7 @@ namespace MVC_Test.Controllers
                        select new BillOfMaterialsExpanded
                        {
                            BillOfMaterialsExpandedId = b.BillOfMaterialsExpandedId,
-                           BomLevel = b.BomLevel,
+                           Bomlevel = b.Bomlevel,
                            TopLevelItem = b.TopLevelItem,
                            TopLevelDescription = b.TopLevelDescription,
                            ParentItem = b.ParentItem,

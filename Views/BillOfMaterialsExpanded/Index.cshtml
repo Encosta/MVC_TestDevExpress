@@ -22,8 +22,8 @@
     //.RemoteOperations(o => o.Filtering(true).Grouping(true).Sorting(true))
     .KeyExpr("BillOfMaterialsExpandedId")
     .ParentIdExpr("ParentId")
-    .HasItemsExpr("FullSequence")
-    //.RootValue(-1)
+    //.HasItemsExpr("HasChild")
+    .RootValue(-1)
     .SearchPanel(searchPanel => searchPanel.Visible(true))
     .HeaderFilter(headerFilter => headerFilter.Visible(true))
     .Selection(s => s
@@ -32,7 +32,7 @@
     )
     .Columns(columns => {
 
-        columns.AddFor(m => m.BomLevel);
+        columns.AddFor(m => m.Bomlevel);
 
         columns.AddFor(m => m.TopLevelItem).FilterValue("001SP010030.00A");
 
