@@ -20,7 +20,7 @@
     .Key("FullSequence")
     )
     //.DataStructure(TreeListDataStructure.Plain)
-    //.RemoteOperations(o => o.Filtering(true).Grouping(true).Sorting(true))
+    .RemoteOperations(o => o.Filtering(true).Grouping(true).Sorting(true))
     .KeyExpr("FullSequence")
     .ParentIdExpr("ParentId")
     //.HasItemsExpr("HasChild")
@@ -35,7 +35,7 @@
     {
 
         columns.AddFor(m => m.Bomlevel);
-        columns.AddFor(m => m.TopLevelItem);
+        columns.AddFor(m => m.TopLevelItem).FilterValue("006800422.1.6PR");
         columns.AddFor(m => m.TopLevelDescription);
         columns.AddFor(m => m.ParentItem);
         columns.AddFor(m => m.ParentDescription);
@@ -47,7 +47,7 @@
         columns.AddFor(m => m.ScrapPercentage);
         columns.AddFor(m => m.BomSequence);
         columns.AddFor(m => m.FullSequence);
-        columns.AddFor(m => m.HasChild);
+        //columns.AddFor(m => m.HasChild);
         columns.AddFor(m => m.StandardCost);
         columns.AddFor(m => m.LineCost);
         columns.AddFor(m => m.ManufacturerCodes);
@@ -55,13 +55,12 @@
         columns.AddFor(m => m.Bomreference);
         columns.AddFor(m => m.Bomrelease);
     })
+    .RowAlternationEnabled(true)
     .FocusedRowEnabled(true)
     .ShowRowLines(true)
-    .ShowBorders(true)
     .ColumnAutoWidth(true)
-    //.ExpandedRowKeys(new[] { 0 })
-    .AutoExpandAll(false)
-    .ColumnAutoWidth(true)
+    ////.ExpandedRowKeys(new[] { 0 })
+    //.AutoExpandAll(false)
     .ShowBorders(true)
     .Scrolling(scrolling => scrolling.Mode(TreeListScrollingMode.Standard))
     .Paging(paging =>
@@ -72,7 +71,7 @@
     .Pager(pager =>
     {
         pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new[] {5, 10, 30});
+        pager.AllowedPageSizes(new[] { 5, 10, 30 });
         pager.ShowInfo(true);
     })
 
