@@ -22,4 +22,7 @@
       <AutoGen>True</AutoGen>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EncostaServer3\" />
+  </ItemGroup>
 </Project>

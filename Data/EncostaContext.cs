@@ -31,17 +31,17 @@ namespace MVC_Test.Data
         {
             modelBuilder.Entity<TreeList>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.TreeListId);
+
+                entity.Property(e => e.TreeListId)
+                    .HasColumnName("TreeListID")
+                    .HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.Id).HasMaxLength(50);
 
                 entity.Property(e => e.Items).HasMaxLength(50);
 
                 entity.Property(e => e.ParentId).HasMaxLength(50);
-
-                entity.Property(e => e.TreeListId)
-                    .HasColumnName("TreeListID")
-                    .HasDefaultValueSql("(newid())");
             });
 
             OnModelCreatingPartial(modelBuilder);

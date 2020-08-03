@@ -52,6 +52,7 @@
             pager.ShowInfo(true);
         })
         .Editing(e => e
+            .Mode(GridEditMode.Batch)
             .AllowAdding(true)
             .AllowUpdating(true)
             .AllowDeleting(true)))

@@ -1,0 +1,22 @@
+﻿
+
+Scaffold-DbContext "Server=server3;Database=Encosta;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir EncostaServer3 -Tables "ManufacturerConversion"
+
+
+
+
+
+
+
+Scaffold-DbContext "Server=server3;Database=EncostaMacolaProgressionTest;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir EncostaServer3 -Tables "ARCUSFIL_SQL","Item_analysis"
+
+Scaffold-DbContext "Server=DESKTOP-DHL93P7\RIVEN;Database=Encosta;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir EncostaLocal
+
+
+------------------------------------------------------------------------------------------------------------
+ -Tables "ARCUSFIL_SQL","Encosta_vItem", "Encosta_vBillOfMaterial", "Encosta_vCustomer"
+    Item_analysis
+------------------------------------------------------------------------------------------------------------
+
+
+Scaffold-DbContext "Server=DESKTOP-DHL93P7\RIVEN;Database=EncostaDev;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir EncostaTest
