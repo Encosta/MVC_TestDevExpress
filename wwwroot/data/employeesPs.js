@@ -11,7 +11,21 @@
     "Mobile_Phone": "(213) 555-9392",
     "Birth_Date": "1964-03-16",
     "Hire_Date": "1995-01-15"
-}, {
+},
+    {
+        "ID": 3,
+        "Head_ID": 1,
+        "Full_Name": "Arthur Miller",
+        "Prefix": "Mr.",
+        "Title": "CTO",
+        "City": "Denver",
+        "State": "Colorado",
+        "Email": "arthurm@dx-email.com",
+        "Skype": "arthurm_DX_skype",
+        "Mobile_Phone": "(310) 555-8583",
+        "Birth_Date": "1972-07-11",
+        "Hire_Date": "2007-12-18"
+    },{
     "ID": 2,
     "Head_ID": -1,
     "Full_Name": "Samantha Bright",
@@ -24,20 +38,7 @@
     "Mobile_Phone": "(213) 555-2858",
     "Birth_Date": "1966-05-02",
     "Hire_Date": "2004-05-24"
-}, {
-    "ID": 3,
-    "Head_ID": 1,
-    "Full_Name": "Arthur Miller",
-    "Prefix": "Mr.",
-    "Title": "CTO",
-    "City": "Denver",
-    "State": "Colorado",
-    "Email": "arthurm@dx-email.com",
-    "Skype": "arthurm_DX_skype",
-    "Mobile_Phone": "(310) 555-8583",
-    "Birth_Date": "1972-07-11",
-    "Hire_Date": "2007-12-18"
-    },
+}, 
     {
         "ID": 3,
         "Head_ID": 5,

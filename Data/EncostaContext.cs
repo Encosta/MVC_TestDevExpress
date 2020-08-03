@@ -31,6 +31,9 @@ namespace MVC_Test.Data
         {
             modelBuilder.Entity<BillOfMaterialsExpanded>(entity =>
             {
+                entity.HasIndex(e => new { e.FullSequence, e.BillOfMaterialsExpandedId })
+                    .HasName("FullSequence");
+
                 entity.Property(e => e.BillOfMaterialsExpandedId)
                     .HasColumnName("BillOfMaterialsExpandedID")
                     .HasDefaultValueSql("(newid())");
@@ -53,7 +56,9 @@ namespace MVC_Test.Data
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.FullSequence).HasMaxLength(100);
+                entity.Property(e => e.FullSequence)
+                    .IsRequired()
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.HasChild).HasMaxLength(1);
 
@@ -62,6 +67,7 @@ namespace MVC_Test.Data
                 entity.Property(e => e.ParentDescription).IsRequired();
 
                 entity.Property(e => e.ParentId)
+                    .IsRequired()
                     .HasColumnName("ParentID")
                     .HasMaxLength(50);
 

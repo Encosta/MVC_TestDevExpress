@@ -35,9 +35,8 @@ namespace MVC_Test.Controllers
         public object Get(DataSourceLoadOptions loadOptions)
         {
             var boms = from b in _context.BillOfMaterialsExpanded
-                       select new BillOfMaterialsExpanded
+                       select new BillOfMaterialsExpanded()
                        {
-                           BillOfMaterialsExpandedId = b.BillOfMaterialsExpandedId,
                            Bomlevel = b.Bomlevel,
                            TopLevelItem = b.TopLevelItem,
                            TopLevelDescription = b.TopLevelDescription,
@@ -45,10 +44,20 @@ namespace MVC_Test.Controllers
                            ParentDescription = b.ParentDescription,
                            ComponentItem = b.ComponentItem,
                            ComponentDescription = b.ComponentDescription,
+                           QuantityPerTop = b.QuantityPerTop,
+                           QuantityPerParent = b.QuantityPerParent,
+                           PurchasedOrManufactured = b.PurchasedOrManufactured,
+                           ScrapPercentage = b.ScrapPercentage,
+                           BomSequence = b.BomSequence,
                            FullSequence = b.FullSequence,
                            ParentId = b.ParentId,
                            HasChild = b.HasChild,
-
+                           StandardCost = b.StandardCost,
+                           LineCost = b.LineCost,
+                           ManufacturerCodes = b.ManufacturerCodes,
+                           BomDate = b.BomDate,
+                           Bomreference = b.Bomreference,
+                           Bomrelease = b.Bomrelease
                        };
             return DataSourceLoader.Load(_context.BillOfMaterialsExpanded, loadOptions);
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MVC_Test.Models
 {
-    public partial class BillOfMaterialsExpanded
+    public class BillOfMaterialsExpanded
     {
         public Guid BillOfMaterialsExpandedId { get; set; }
         public int? Bomlevel { get; set; }

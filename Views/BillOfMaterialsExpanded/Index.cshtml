@@ -9,18 +9,19 @@
 
 <h2>Index</h2>
 
-@(Html.DevExtreme().TreeList<MVC_Test.Models.BillOfMaterialsExpanded>()
+@(Html.DevExtreme().TreeList<MVC_Test.Models.BillOfMaterialsExpanded>
+    ()
     .DataSource(ds => ds.Mvc()
-        .Controller("BillOfMaterialsExpanded")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put")
-        .DeleteAction("Delete")
-        .Key("BillOfMaterialsExpandedId")
+    .Controller("BillOfMaterialsExpanded")
+    .LoadAction("Get")
+    .InsertAction("Post")
+    .UpdateAction("Put")
+    .DeleteAction("Delete")
+    .Key("FullSequence")
     )
-    .DataStructure(TreeListDataStructure.Plain)
+    //.DataStructure(TreeListDataStructure.Plain)
     //.RemoteOperations(o => o.Filtering(true).Grouping(true).Sorting(true))
-    .KeyExpr("BillOfMaterialsExpandedId")
+    .KeyExpr("FullSequence")
     .ParentIdExpr("ParentId")
     //.HasItemsExpr("HasChild")
     .RootValue(-1)
@@ -30,50 +31,31 @@
         .Mode(SelectionMode.Multiple)
         .Recursive(true)
     )
-    .Columns(columns => {
+    .Columns(columns =>
+    {
 
         columns.AddFor(m => m.Bomlevel);
-
-        columns.AddFor(m => m.TopLevelItem).FilterValue("001SP010030.00A");
-
+        columns.AddFor(m => m.TopLevelItem);
         columns.AddFor(m => m.TopLevelDescription);
-
         columns.AddFor(m => m.ParentItem);
-
         columns.AddFor(m => m.ParentDescription);
-
         columns.AddFor(m => m.ComponentItem);
-
         columns.AddFor(m => m.ComponentDescription);
-
-        //columns.AddFor(m => m.QuantityPerTop);
-
-        //columns.AddFor(m => m.QuantityPerParent);
-
-        //columns.AddFor(m => m.PurchasedOrManufactured);
-
-        //columns.AddFor(m => m.ScrapPercentage);
-
+        columns.AddFor(m => m.QuantityPerTop);
+        columns.AddFor(m => m.QuantityPerParent);
+        columns.AddFor(m => m.PurchasedOrManufactured);
+        columns.AddFor(m => m.ScrapPercentage);
         columns.AddFor(m => m.BomSequence);
-
-        columns.AddFor(m => m.FullSequence).SortOrder(SortOrder.Asc);
-
-        columns.AddFor(m => m.ParentId);
-
+        columns.AddFor(m => m.FullSequence);
         columns.AddFor(m => m.HasChild);
-
-        //columns.AddFor(m => m.StandardCost);
-
-        //columns.AddFor(m => m.LineCost);
-
-        //columns.AddFor(m => m.ManufacturerCodes);
-
-        //columns.AddFor(m => m.BomDate);
-
-        //columns.AddFor(m => m.BomReference);
-
-        //columns.AddFor(m => m.BomRelease);
+        columns.AddFor(m => m.StandardCost);
+        columns.AddFor(m => m.LineCost);
+        columns.AddFor(m => m.ManufacturerCodes);
+        columns.AddFor(m => m.BomDate);
+        columns.AddFor(m => m.Bomreference);
+        columns.AddFor(m => m.Bomrelease);
     })
+    .FocusedRowEnabled(true)
     .ShowRowLines(true)
     .ShowBorders(true)
     .ColumnAutoWidth(true)
